@@ -1,14 +1,22 @@
 import React, { Component } from 'react' 
 import "./Tour.scss"
 
-export default class Tour extends Component {
-    render() {
+export default class Tour extends Component { 
+   state = { 
+     showInfo:false
+   }; 
+   handleinfo = () => { 
+    this.setState({ 
+      showInfo:!this.state.showInfo
+    })
+   }
+    render() { 
+      const{city, img, name, info} = this.props.tour
         return (
             <article className='tour'>
               <div className='img-container'>  
                <img  
-                 width='200' 
-                 src="https://images.pexels.com/photos/11511204/pexels-photo-11511204.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"  
+                 src={img} 
                  alt=""
                   /> 
                   <span className='close-btn'>  
@@ -16,10 +24,15 @@ export default class Tour extends Component {
                  </span>
               </div> 
               <div className='tour-info'> 
-               <h3>city</h3> 
-               <h4>name</h4> 
-               <h5>info<span><i className='fas fa-caret-square-down'/></span></h5> 
-               <p>lorem ipsum dolor sit amet</p>
+               <h3>{city}</h3> 
+               <h4>{name}</h4> 
+               <h5> 
+                 info{''} 
+                 <span onClick={this.handleinfo}> 
+                 <i className='fas fa-caret-square-down'/> 
+                 </span> 
+                 </h5>  
+               {this.state.showInfo && <p>{info}</p>}
              </div>
             </article>
         )
