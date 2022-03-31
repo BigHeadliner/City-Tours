@@ -5,11 +5,11 @@ import TourList from './components/TourList'
 
 class App extends Component {
   render() {
-    return (  
-     <div>  
-      <Navbar /> 
-      <TourList />
-    </div> 
+    return (
+      <div>
+        <Navbar />
+        <TourList />
+      </div>
     );
   }
 
